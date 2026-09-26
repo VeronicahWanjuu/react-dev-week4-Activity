@@ -1,0 +1,31 @@
+.header {
+  padding: 24px 40px;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-light {
+  background-color: #1a1a2e;
+  color: white;
+}
+
+.header-dark {
+  background-color: #0a0a15;
+  color: #cccccc;
+}
+
+.header-title {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.header-accent {
+  color: #e94560;
+}
+
+.header-subtitle {
+  color: #aaaaaa;
+  font-size: 0.9rem;
+  margin: 6px 0 0 0;
+}
