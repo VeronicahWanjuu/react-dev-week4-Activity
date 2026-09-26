@@ -1,0 +1,121 @@
+.task-manager {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 24px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.task-manager-light {
+  background-color: #ffffff;
+  color: #1a1a2e;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.task-manager-dark {
+  background-color: #1e1e2e;
+  color: #cccccc;
+  border: 1px solid #444;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.task-manager-title {
+  font-size: 1.4rem;
+  margin: 0 0 20px 0;
+  color: #e94560;
+}
+
+.task-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.task-input-light {
+  background-color: #f9f9f9;
+  color: #1a1a2e;
+}
+
+.task-input-dark {
+  background-color: #2a2a3e;
+  color: #cccccc;
+  border-color: #555;
+}
+
+.task-add-button {
+  padding: 10px 20px;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.task-add-button:hover {
+  background-color: #c73652;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.task-item-light {
+  background-color: #f5f5f5;
+}
+
+.task-item-dark {
+  background-color: #2a2a3e;
+}
+
+.task-text {
+  cursor: pointer;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.task-remove-button {
+  padding: 6px 14px;
+  background-color: transparent;
+  color: #e94560;
+  border: 1px solid #e94560;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.task-remove-button:hover {
+  background-color: #e94560;
+  color: white;
+}
+
+.task-count {
+  font-size: 0.85rem;
+  color: #999;
+  text-align: right;
+  margin: 0;
+}
