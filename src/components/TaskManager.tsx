@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 import { taskReducer, initialState } from '../reducers/taskReducer';
 import { useTheme } from '../context/ThemeContext';
 import '../styles/TaskManager.css';
@@ -50,10 +50,7 @@ const TaskManager: React.FC = () => {
               opacity: task.completed ? 0.6 : 1,
             }}
           >
-            <span
-              className="task-text"
-              onClick={() => handleToggle(task.id)}
-            >
+            <span className="task-text" onClick={() => handleToggle(task.id)}>
               {task.completed ? '✅' : '⬜'} {task.text}
             </span>
             <button

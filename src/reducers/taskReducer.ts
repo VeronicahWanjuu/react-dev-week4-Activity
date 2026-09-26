@@ -1,26 +1,23 @@
-import { TaskState, TaskAction } from '../types/types';
+import type { Task, TaskAction, TaskState } from '../types/types';
 
 export const initialState: TaskState = {
-  tasks: [
-    { id: 1, text: 'Learn useContext hook', completed: false },
-    { id: 2, text: 'Learn useReducer hook', completed: false },
-  ],
+  tasks: [],
 };
 
-export const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
+export function taskReducer(state: TaskState, action: TaskAction): TaskState {
   switch (action.type) {
-    case 'ADD_TASK':
+    case 'ADD_TASK': {
+      const newTask: Task = {
+        id: Date.now(),
+        text: action.payload,
+        completed: false,
+      };
+
       return {
         ...state,
-        tasks: [
-          ...state.tasks,
-          {
-            id: Date.now(),
-            text: action.payload,
-            completed: false,
-          },
-        ],
+        tasks: [...state.tasks, newTask],
       };
+    }
     case 'REMOVE_TASK':
       return {
         ...state,
@@ -38,4 +35,4 @@ export const taskReducer = (state: TaskState, action: TaskAction): TaskState => 
     default:
       return state;
   }
-};
+}
