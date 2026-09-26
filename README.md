@@ -1,75 +1,81 @@
-# React + TypeScript + Vite
+# React Week 4 — useContext and useReducer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app built with TypeScript and Vite that demonstrates
+global state management using useContext for theme switching
+and useReducer for task management.
 
-Currently, two official plugins are available:
+## How to Install and Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Clone the repository
+   git clone https://github.com/VeronicahWanjuu/react-dev-week4-Activity.git
 
-## React Compiler
+2. Go into the project folder
+   cd react-dev-week4-Activity
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Install dependencies
+   npm install
 
-## Expanding the ESLint configuration
+4. Start the dev server (uses Vite)
+   npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+5. Open browser at http://localhost:5173
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+src/
+├── constants/
+│   └── theme.ts
+├── context/
+│   └── ThemeContext.tsx
+├── components/
+│   ├── Navbar.tsx
+│   ├── Navbar.module.css
+│   ├── TaskManager.tsx
+│   └── TaskManager.module.css
+├── reducers/
+│   └── taskReducer.ts
+├── App.tsx
+└── main.tsx
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Color Palette Used
 
-```
+Light Theme
+Background: #FFFFFF
+Text: #000000
+Button: #1E90FF
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Dark Theme
+Background: #242629
+Text: #FFFFFF
+Button: #85D1B0
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Challenges
 
-```
+The hardest part for me was understanding why we set the context
+default to undefined instead of just giving it an empty value.
+I kept getting TypeScript errors until I realised that throwing
+an error inside useTheme when context is missing is actually the
+correct pattern,  it tells you immediately if you forgot to wrap
+your component in the provider instead of getting a silent bug.
+
+CSS Modules confused me at first because I was used to just
+writing className="container" as a plain string. Having to write
+styles.container felt unnecessary but after accidentally having
+two components with the same class name clash I understood exactly
+why CSS Modules exist — each file gets its own scoped names so
+nothing leaks into other components.
+
+The biggest struggle was when TaskManager kept throwing errors
+because I had mixed up the old action types ADD_TASK and REMOVE_TASK
+with the new ones add and remove. That taught me to always check
+that the reducer action types and the dispatch calls in the
+component match exactly — TypeScript helps catch this but only
+if your types are set up correctly from the start.
+
+## Libraries Used
+
+- React 18
+- TypeScript
+- Vite
+- ESLint
